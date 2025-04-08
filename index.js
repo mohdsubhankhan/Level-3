@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
 // Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/twitterDB", {})
+mongoose.connect("mongodb://0.0.0.0/twitterDB", {})
 .then(() => {
     console.log("Connected to MongoDB");
 })
