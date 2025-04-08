@@ -29,50 +29,50 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride('_method'))
 
 // List all tweets
-app.get("/twitter", async (req, res) => {
+app.get("/", async (req, res) => {
     const tweets = await Tweet.find({});
     res.render("index.ejs", { tweets });
 });
 
 // Form for new tweet
-app.get("/twitter/new", (req, res) => {
+app.get("/new", (req, res) => {
     res.render("new.ejs");
 });
 
 // Show tweet details
-app.get("/twitter/:id", async (req, res) => {
+app.get("/:id", async (req, res) => {
     const { id } = req.params;
     const tweet = await Tweet.findById(id);
     res.render("show.ejs", { tweet });
 });
 
 // Create a new tweet
-app.post("/twitter", async (req, res) => {
+app.post("/", async (req, res) => {
     const { username, content } = req.body;
     await Tweet.create({ username, content });
-    res.redirect("/twitter");
+    res.redirect("/");
 });
 
 // Form to update tweet
-app.get("/twitter/:id/update", async (req, res) => {
+app.get("/:id/update", async (req, res) => {
     const { id } = req.params;
     const tweet = await Tweet.findById(id);
     res.render("update.ejs", { tweet });
 });
 
 // Update tweet
-app.patch("/twitter/:id", async (req, res) => {
+app.patch("/:id", async (req, res) => {
     const { id } = req.params;
     const { content } = req.body;
     await Tweet.findByIdAndUpdate(id, { content });
-    res.redirect("/twitter");
+    res.redirect("/");
 });
 
 // Delete tweet
-app.delete("/twitter/:id", async (req, res) => {
+app.delete("/:id", async (req, res) => {
     const { id } = req.params;
     await Tweet.findByIdAndDelete(id);
-    res.redirect("/twitter");
+    res.redirect("/");
 });
 
 app.listen(port, () => {

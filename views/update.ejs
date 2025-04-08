@@ -16,7 +16,7 @@
         <div class="bg-white p-6 rounded shadow">
             <p class="text-gray-600">Tweet ID: <%= tweet._id %></p>
             <p class="text-gray-800 font-semibold mb-4">Username: @<%= tweet.username %></p>
-            <form action="/twitter/<%= tweet._id %>?_method=PATCH" method="POST" class="space-y-4">
+            <form action="/<%= tweet._id %>?_method=PATCH" method="POST" class="space-y-4">
                 <div>
                     <textarea name="content" rows="4"
                         class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:border-blue-500"><%= tweet.content %></textarea>
