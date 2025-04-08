@@ -1,4 +1,6 @@
 const express = require("express")
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express();
 const port = 3000;
 const path = require("path");
@@ -6,7 +8,7 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 
 // Connect to MongoDB
-mongoose.connect("mongodb://0.0.0.0/twitterDB", {})
+mongoose.connect(`${process.env.MONGOODB_URI}`, {})
 .then(() => {
     console.log("Connected to MongoDB");
 })
